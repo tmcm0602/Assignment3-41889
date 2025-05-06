@@ -1,66 +1,67 @@
-//
-//  LiveTimingView.swift
-//  Realtime-Racing
-//
-//  Created by Admin on 5/5/2025.
-//
-
 import SwiftUI
 
 struct LiveTimingView: View {
     @StateObject var viewModel = LiveTimingViewModel()
+    @State private var isAnimating = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             Text("Live Timing")
-                .font(.title)
+                .font(.title2)
                 .bold()
                 .foregroundColor(.f1Red)
                 .padding(.top)
 
-            List(viewModel.lapTimes, id: \.lapNumber) { lap in
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Driver \(lap.driverNumber)")
-                        .foregroundColor(.f1White)
-                        .font(.headline)
-                    
-                    HStack {
-                        TimingSlot(label: "S1", time: lap.sector1Time)
-                        TimingSlot(label: "S2", time: lap.sector2Time)
-                        TimingSlot(label: "S3", time: lap.sector3Time)
-                        TimingSlot(label: "Lap", time: lap.lapTime)
+            HStack {
+                Text("POSITION").font(.caption).frame(width: 70, alignment: .leading)
+                Text("LAP TIME").font(.caption).frame(width: 70, alignment: .trailing)
+                Text("GAP").font(.caption).frame(width: 60, alignment: .trailing)
+                Text("INT").font(.caption).frame(width: 60, alignment: .trailing)
+                Text("TYRE").font(.caption).frame(width: 40, alignment: .leading)
+            }
+            .foregroundColor(.gray)
+            .padding(.horizontal)
+
+            if viewModel.drivers.isEmpty {
+                ZStack {
+                    Color.f1Black
+                    VStack {
+                        Text("No Sessions Live Currently...")
+                            .foregroundColor(.gray)
+                            .padding()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .f1Red))
                     }
                 }
-                .padding()
-                .background(Color.f1Grey)
-                .cornerRadius(10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            else {
+                List {
+                    ForEach(viewModel.drivers.indices, id: \.self) { i in
+                        let driver = viewModel.drivers[i]
+                        let lapData = viewModel.lapTimes.first(where: { $0.driverNumber == driver.driverNumber })
+
+                        LiveTimingRow(
+                            position: i + 1,
+                            driverCode: driver.code,
+                            teamColor: driver.teamColor,
+                            lapTime: lapData?.lapTimeFormatted,
+                            gap: lapData?.gapFormatted,
+                            interval: lapData?.intervalFormatted,
+                            tyreImage: Image(systemName: "circle.fill"),  // Placeholder
+                            isPlaceholder: !viewModel.isSessionLive
+                        )
+                    }
+                }
+                .listStyle(PlainListStyle())
             }
         }
         .background(Color.f1Black.edgesIgnoringSafeArea(.all))
         .onAppear {
+            isAnimating = true
             Task { await viewModel.fetchLiveData() }
         }
     }
-}
-
-struct TimingSlot: View {
-    let label: String
-    let time: Double?
-
-    var body: some View {
-        VStack {
-            Text(label)
-                .font(.caption)
-                .foregroundColor(.f1Red)
-            Text(time != nil ? String(format: "%.3f", time!) : "--.--")
-                .font(.subheadline)
-                .foregroundColor(.f1White)
-        }
-        .frame(width: 60)
-    }
-}
-
-
-#Preview {
-    LiveTimingView()
+    
+    // Helper function moved to LapTime model
 }
