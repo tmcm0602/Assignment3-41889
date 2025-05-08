@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct PastSessionsView: View {
-    let pastSessions = ["Australia GP - Race", "Bahrain GP - Qualifying", "Monaco GP - Practice 3"] // Mock data
+    @StateObject private var viewModel = MeetingViewModel()
 
     var body: some View {
-        List(pastSessions, id: \.self) { session in
+        List(viewModel.meetings) { meeting in
             VStack(alignment: .leading, spacing: 5) {
-                Text(session)
+                Text(meeting.meetingName)
                     .font(.headline)
                     .foregroundColor(.f1White)
                 Text("View session details")
                     .font(.caption)
-                    .foregroundColor(.f1Grey)
+                    .foregroundColor(.f1White)
             }
             .padding()
-            .background(Color.f1Grey)
+            .background(Color.f1Black)
             .cornerRadius(10)
         }
         .navigationTitle("Past Sessions")

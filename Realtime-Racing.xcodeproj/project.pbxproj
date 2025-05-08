@@ -10,9 +10,33 @@
 		84198F7C2DC84CF3006156F3 /* Realtime-Racing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Realtime-Racing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		84198FD02DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				.swift,
+			);
+			target = 84198F7B2DC84CF3006156F3 /* Realtime-Racing */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		84198FD12DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Compile Sources" phase from "Realtime-Racing" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 84198F782DC84CF3006156F3 /* Sources */;
+			membershipExceptions = (
+				.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84198F7E2DC84CF3006156F3 /* Realtime-Racing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84198FD02DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */,
+				84198FD12DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Compile Sources" phase from "Realtime-Racing" target */,
+			);
 			path = "Realtime-Racing";
 			sourceTree = "<group>";
 		};
