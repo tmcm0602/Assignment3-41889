@@ -33,4 +33,3 @@ struct Driver: Decodable, Identifiable {
         "soft" // or "medium", "hard"
     }
 }
-

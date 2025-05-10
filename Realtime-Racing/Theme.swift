@@ -5,6 +5,7 @@ extension Color {
     static let f1Black = Color(red: 0.05, green: 0.05, blue: 0.05)
     static let f1White = Color.white
     static let f1Grey = Color.gray.opacity(0.2)
+    static let f1LightGrey = Color(red: 0.85, green: 0.85, blue: 0.85)
 
         init?(hex: String) {
             var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -16,6 +21,9 @@ struct HomeView: View {
                 }
                 NavigationLink(destination: PastSessionsView()) {
                     HomeButton(title: "Past Sessions", icon: "clock.arrow.circlepath")
+                }
+                NavigationLink(destination: DriverListView()) {
+                    HomeButton(title: "F1 Drivers Leaderboard", icon: "person.2.fill")
                 }
                 Spacer()
             }
