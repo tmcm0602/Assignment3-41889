@@ -16,20 +16,19 @@ struct Driver: Decodable, Identifiable {
     let teamName: String
     let teamColour: String // e.g., "#FF0000"
     let headshotUrl: String
-
-    // Add computed properties for UI
-    var code: String {
-        // Return 3-letter code from name, or provide mapping if needed
-        let parts = fullName.split(separator: " ")
-        return parts.last?.prefix(3).uppercased() ?? "DRI"
-    }
-
+    let code: String
+    
     var teamColor: Color {
         Color(hex: teamColour) ?? .white
     }
-
-    var currentTyreImageName: String? {
-        // Placeholder: update this when you assign real data
-        "soft" // or "medium", "hard"
+    
+    // CodingKeys for JSON parsing
+    enum CodingKeys: String, CodingKey {
+        case driverNumber
+        case fullName
+        case teamName
+        case teamColour
+        case headshotUrl
+        case code
     }
 }
