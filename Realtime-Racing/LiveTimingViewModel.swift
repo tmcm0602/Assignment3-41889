@@ -15,7 +15,7 @@ class LiveTimingViewModel: ObservableObject {
     init() {
         // Initialize with Miami qualifying
         Task {
-            await changeSession(type: "Qualifying", circuit: "Miami International Autodrome")
+            await changeSession(type: "Qualifying", circuit: "Miami")
         }
         
         // Set up timer to fetch data every 3 seconds
@@ -121,13 +121,21 @@ class LiveTimingViewModel: ObservableObject {
     // Change session type and circuit
     func changeSession(type: String, circuit: String) async {
         do {
-            let url = URL(string: "\(baseURL)/session/change/\(type)/\(circuit)")!
-            let _ = try await URLSession.shared.data(from: url)
+            let changeURL = URL(string: "\(baseURL)/session/change/\(type)/\(circuit)")!
+            let _ = try await URLSession.shared.data(from: changeURL)
+            
+            // If session is qualifying, start simulation
+            if type == "Qualifying" {
+                let startURL = URL(string: "\(baseURL)/session/start_qualifying")!
+                let _ = try await URLSession.shared.data(from: startURL)
+            }
+
             await fetchLiveData()
         } catch {
             print("Error changing session: \(error)")
         }
     }
+
 }
 
 // Response models for the API
