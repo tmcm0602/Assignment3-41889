@@ -11,6 +11,7 @@ struct Drivers: Identifiable, Codable {
     var id: Int { driverKey }
 
     let driverKey: Int
+    let driverNumber: Int
     let fullName: String
     let team: String
     let imageUrl: String
@@ -53,6 +54,7 @@ struct Drivers: Identifiable, Codable {
 
     enum CodingKeys: String, CodingKey {
         case driverKey = "driver_key"
+        case driverNumber = "driver_number"
         case fullName = "full_name"
         case team
         case imageUrl = "image_url"

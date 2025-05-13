@@ -30,4 +30,8 @@ class DriversViewModel: ObservableObject {
             print("❌ Failed to decode drivers data: \(error)")
         }
     }
+    
+    func driver(for driverNumber: Int) -> Drivers? {
+        return drivers.first { $0.driverNumber == driverNumber }
+    }
 }

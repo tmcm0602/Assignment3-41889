@@ -269,7 +269,7 @@
               "fastest_laps": 4,
               "gps_entered": 212
           },
-          "image_url": "https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.png",
+          "image_url": "https://www.formula1.com/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.png.transform/1col/image.png",
           "driver_portrait": "https://media.formula1.com/image/upload/f_auto,c_limit,q_auto,w_1320/content/dam/fom-website/drivers/2025Drivers/sainz"
       },
       {
@@ -316,7 +316,7 @@
       },
       {
           "driver_key": 16,
-          "driver_number": 3,
+          "driver_number": 6,
           "full_name": "Isack Hadjar",
           "short_name": "Hadjar",
           "team": "Racing Bulls",

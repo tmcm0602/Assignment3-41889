@@ -9,27 +9,66 @@ import SwiftUI
 
 struct PastSessionsView: View {
     @StateObject private var viewModel = MeetingViewModel()
-
+    
     var body: some View {
-        List(viewModel.meetings) { meeting in
-            VStack(alignment: .leading, spacing: 5) {
-                Text(meeting.meetingName)
-                    .font(.headline)
-                    .foregroundColor(.f1White)
-                Text("View session details")
-                    .font(.caption)
-                    .foregroundColor(.f1White)
+        ScrollView {
+            VStack(spacing: 16) {
+                Text("Past Sessions")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+
+                ForEach(Array(viewModel.meetings.enumerated()), id: \.1.id) { index, meeting in
+                        SessionRowView(index: index, meeting: meeting)
+                }
             }
-            .padding()
-            .background(Color.f1Black)
-            .cornerRadius(10)
+            .padding(.top)
         }
-        .navigationTitle("Past Sessions")
-        .background(Color.f1Black.edgesIgnoringSafeArea(.all))
+        .background(Color.black.ignoresSafeArea())
+    }
+    
+    struct SessionRowView: View {
+        let index: Int
+        let meeting: Meeting // Use your actual model
+
+        var body: some View {
+            VStack(spacing: 0) {
+                HStack(alignment: .center, spacing: 12) {
+                    Text("\(index + 1)")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                        .frame(width: 30)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(meeting.meetingName)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        NavigationLink(destination: SessionDetailView(meeting: meeting)) {
+                            Text("Results")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                            }
+                    }
+                    Spacer()
+
+                }
+                .padding()
+
+                Divider()
+                    .background(Color.black.opacity(0.4)) // Subtle divider inside card
+                    .padding(.horizontal, 12)
+            }
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(20)
+            .padding(.horizontal)
+        }
     }
 }
 
 
 #Preview {
-    PastSessionsView()
+    NavigationStack {
+            PastSessionsView()
+        }
 }
