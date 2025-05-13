@@ -11,31 +11,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		84198FD02DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */ = {
+		84198FF32DD37835006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				.swift,
+				Info.plist,
 			);
 			target = 84198F7B2DC84CF3006156F3 /* Realtime-Racing */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		84198FD12DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Compile Sources" phase from "Realtime-Racing" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = 84198F782DC84CF3006156F3 /* Sources */;
-			membershipExceptions = (
-				.swift,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84198F7E2DC84CF3006156F3 /* Realtime-Racing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				84198FD02DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */,
-				84198FD12DCA056E006156F3 /* Exceptions for "Realtime-Racing" folder in "Compile Sources" phase from "Realtime-Racing" target */,
+				84198FF32DD37835006156F3 /* Exceptions for "Realtime-Racing" folder in "Realtime-Racing" target */,
 			);
 			path = "Realtime-Racing";
 			sourceTree = "<group>";
@@ -279,6 +268,8 @@
 				DEVELOPMENT_TEAM = 3ZXY9W95SW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Realtime-Racing/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,6 +299,8 @@
 				DEVELOPMENT_TEAM = 3ZXY9W95SW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Realtime-Racing/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

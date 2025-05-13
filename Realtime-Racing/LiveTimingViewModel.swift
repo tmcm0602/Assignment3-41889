@@ -9,7 +9,7 @@ class LiveTimingViewModel: ObservableObject {
     @Published var circuitName: String = ""
     @Published var showGapToLeader: Bool = true
     
-    private let baseURL = "http://192.168.1.107:5000/api"
+    private let baseURL = "http://13.211.137.230:5000/api"
     private var timer: Timer?
     
     init() {
@@ -80,9 +80,29 @@ class LiveTimingViewModel: ObservableObject {
                 newLapTimes.append(lapTime)
             }
             
+            let lapTimesList: [LapTime] = timing.enumerated().map { (index, entry) in
+                let gap = entry.gap
+                let interval = entry.interval
+                let intervalColor: Color = entry.intervalColor == "red" ? .red : .green
+
+                return LapTime(
+                    driverNumber: entry.driverNumber,
+                    lapNumber: 0,
+                    lapTime: entry.bestLapTime,
+                    sector1Time: nil,
+                    sector2Time: nil,
+                    sector3Time: nil,
+                    position: index + 1,
+                    gap: gap,
+                    interval: interval,
+                    intervalColor: intervalColor,
+                    tyreCompound: entry.currentTyre
+                )
+            }
+            
             // Update on main thread
             await MainActor.run {
-                self.lapTimes = newLapTimes
+                self.lapTimes = lapTimesList
                 self.sessionName = "\(sessionInfo.name) - \(sessionInfo.circuit)"
                 self.circuitName = sessionInfo.circuit
                 self.isSessionLive = sessionInfo.isActive
